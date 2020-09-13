@@ -12,7 +12,7 @@ let keywords = ['гобой', 'как звучит флейта', 'кларне�
 let keyword = keywords[getRandom(0,keywords.length)];
 let button = document.getElementsByClassName("button_theme_websearch")[0];
 if(button != undefined){
-    document.getElementById("text").value='гобой';
+    document.getElementById("text").value= keyword;
     document.getElementsByClassName("button_theme_websearch")[0].click();
 }else{
     let links = document.links;

@@ -1,0 +1,48 @@
+<?
+  class Person{
+    private $name;
+    private $lastname;
+    private $age;
+    private $hp;
+    private $mother;
+    private $father;
+    function __construct($name,$lastname,$age,$mother=null,$father=null){
+      $this->name = $name;
+      $this->lastname = $lastname;
+      $this->age = $age;
+      $this->mother = $mother;
+      $this->father = $father;
+      $this->hp = 100;
+    }
+    function sayHi($name){
+      return "Hi $name, my name is ".$this->name;
+    }
+    function setHp($hp){
+      if($this->hp+$hp>=100) $this->hp=100;
+      else $this->hp = $this->hp + $hp;
+      
+    }
+    function getHp(){return $this->hp;}
+    function getName(){return $this->name;}
+    function getMother(){return $this->mother;}
+    function getFather(){return $this->father;}
+    function getInfo(){
+      return "
+      My name is: ".$this->getName()."<br>
+      My mother is: ".$this->getMother()->getName()."<br>
+      My father is: ".$this->getFather()->getName()."<br>
+      My maternal grandmother is: ".$this->getMother()->getMother()->getName()."<br>
+      My paternal grandmother is: ".$this->getFather()->getMother()->getName()."<br>
+      My maternal grandfather is: ".$this->getMother()->getFather()->getName()."<br>
+      My paternal grandfather is: ".$this->getFather()->getFather()->getName()."";
+    }
+  }
+  $ira = new Person("Irina", "Popova",60);
+  $vitya = new Person("Victor", "Popov",61);
+  $sveta = new Person("Sveta", "Shashurina",61);
+  $alex = new Person("Alex", "Shashurin",64);
+  $nick = new Person("Nikita", "Popov", 35,$ira ,$vitya);
+  $olga = new Person("Olga", "Shashurina", 33,$sveta ,$alex);
+  $varvara = new Person("Varvara", "Popova", 2,$olga ,$nick );
+  echo $varvara->getInfo();
+?>
